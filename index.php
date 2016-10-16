@@ -1,4 +1,14 @@
 <?php
+/* ------------------------------------------------------------------
+- Tiny Subscene PHP Script
+-
+- Version : 1.0
+-
+- Author : Milad Maldar ( www.ltiny.ir )
+-
+- Download Link : http://ltiny.ir/subscene
+------------------------------------------------------------------ */
+
 $ckfile = '/tmp/simpleproxy-cookie-'.session_id();
 $cookiedomain = str_replace("http://www.","",base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20v'));
 $cookiedomain = str_replace("https://www.","",$cookiedomain);
