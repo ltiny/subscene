@@ -10,10 +10,10 @@
 ------------------------------------------------------------------ */
 
 $ckfile = '/tmp/simpleproxy-cookie-'.session_id();
-$cookiedomain = str_replace("http://www.","",base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20v'));
+$cookiedomain = str_replace("http://www.","",base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20='));
 $cookiedomain = str_replace("https://www.","",$cookiedomain);
 $cookiedomain = str_replace("www.","",$cookiedomain);
-$url = base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20v') . $_SERVER['REQUEST_URI'];
+$url = base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20=') . $_SERVER['REQUEST_URI'];
 
 if($_SERVER['HTTPS'] == 'on'){
 	$mydomain = 'https://'.$_SERVER['HTTP_HOST'];
@@ -63,12 +63,12 @@ if (curl_error($curlSession)){
 	$header_ar = split(chr(10),$header); 
 	foreach($header_ar as $k=>$v){
 		if(!preg_match("/^Transfer-Encoding/",$v)){
-			$v = str_replace(base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20v'),$mydomain,$v); //header rewrite if needed
+			$v = str_replace(base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20='),$mydomain,$v); //header rewrite if needed
 			header(trim($v));
 		}
 	}
 
-	$body = str_replace(base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20v'),$mydomain,$body);
+	$body = str_replace(base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20='),$mydomain,$body);
 
 	print $body;
 
