@@ -69,6 +69,7 @@ if (curl_error($curlSession)){
 	}
 
 	$body = str_replace(base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20='),$mydomain,$body);
+	$body = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $body);
 
 	print $body;
 
