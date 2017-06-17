@@ -60,7 +60,7 @@ if (curl_error($curlSession)){
 	$header = $ar[0];
 	$body = $ar[1];
 
-	$header_ar = split(chr(10),$header); 
+	$header_ar = explode(chr(10),$header); 
 	foreach($header_ar as $k=>$v){
 		if(!preg_match("/^Transfer-Encoding/",$v)){
 			$v = str_replace(base64_decode('aHR0cHM6Ly9zdWJzY2VuZS5jb20='),$mydomain,$v); //header rewrite if needed
